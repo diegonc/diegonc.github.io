@@ -250,7 +250,7 @@ var _BurgerIcon = require('./BurgerIcon');
 var _BurgerIcon2 = _interopRequireDefault(_BurgerIcon);
 var _CrossIcon = require('./CrossIcon');
 var _CrossIcon2 = _interopRequireDefault(_CrossIcon);
-var _snapsvg = require('snapsvg');
+var _snapsvg = typeof window !== 'undefined' ? window['Snap'] : typeof global !== 'undefined' ? global['Snap'] : null;
 var _snapsvg2 = _interopRequireDefault(_snapsvg);
 var snap = _snapsvg2['default'];
 exports['default'] = function (styles) {
@@ -388,7 +388,7 @@ exports['default'] = function (styles) {
 };
 module.exports = exports['default'];
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./BurgerIcon":4,"./CrossIcon":6,"snapsvg":undefined}],8:[function(require,module,exports){
+},{"./BurgerIcon":4,"./CrossIcon":6}],8:[function(require,module,exports){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 function _interopRequireDefault(obj) {
