@@ -78,7 +78,7 @@ var Demo = React.createClass({
           { this.props.menus[menu].buttonText }
         </a>
       );
-    }.bind(this);
+    }.bind(this));
 
     return (
       <div id="outer-container" style={ { height: '100%' } }>
