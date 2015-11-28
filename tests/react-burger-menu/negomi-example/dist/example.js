@@ -173,4 +173,4 @@ var menus = {
   fallDown: { buttonText: 'Fall Down', items: 2 }
 };
 
-ReactDOM.render(<Demo menus={ menus } />, document.getElementById('app'));
+React.render(<Demo menus={ menus } />, document.getElementById('app'));
