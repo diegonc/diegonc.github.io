@@ -1,4 +1,4 @@
-var classNames = function() {
+/*var classNames = function() {
     var classes = [];
     var i;
     for (i=0; i<arguments.length; i++) {
@@ -12,44 +12,7 @@ var classNames = function() {
 	} else throw new Error("Invalid argument: " + c);
     }
     return classes.join(" ");
-}
-
-var MenuWrap = React.createClass({
-
-  getInitialState: function() {
-    return { hidden : false };
-  },
-
-  componentWillReceiveProps: function(nextProps) {
-    var sideChanged = this.props.children.props.right !== nextProps.children.props.right;
-
-    if (sideChanged) {
-      this.setState({ hidden : true });
-
-      setTimeout(function() {
-        this.show();
-      }.bind(this), this.props.wait);
-    }
-  },
-
-  show: function() {
-    this.setState({ hidden : false });
-  },
-
-  render: function() {
-    var style;
-
-    if (this.state.hidden) {
-      style = { display: 'none' };
-    }
-
-    return (
-      <div style={ style } className={ this.props.side }>
-        { this.props.children }
-      </div>
-    );
-  }
-});
+}*/
 
 var Demo = React.createClass({
 
@@ -57,100 +20,72 @@ var Demo = React.createClass({
     this.setState({ currentMenu: menu });
   },
 
-  changeSide: function(side) {
-    this.setState({ side });
-  },
-
-  getItems: function() {
-    var items;
+  getMenu: function() {
+    var Menu = BurgerMenu[this.state.currentMenu];
+    var jsx;
 
     switch (this.props.menus[this.state.currentMenu].items) {
       case 1:
-        items = [
-          <a key="0" href=""><i className="fa fa-fw fa-star-o"></i><span>Favorites</span></a>,
-          <a key="1" href=""><i className="fa fa-fw fa-bell-o"></i><span>Alerts</span></a>,
-          <a key="2" href=""><i className="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>,
-          <a key="3" href=""><i className="fa fa-fw fa-comment-o"></i><span>Comments</span></a>,
-          <a key="4" href=""><i className="fa fa-fw fa-bar-chart-o"></i><span>Analytics</span></a>,
-          <a key="5" href=""><i className="fa fa-fw fa-newspaper-o"></i><span>Reading List</span></a>
-        ];
+        jsx = (
+          <Menu id={ this.state.currentMenu } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+            <a href=""><i className="fa fa-fw fa-star-o"></i><span>Favorites</span></a>
+            <a href=""><i className="fa fa-fw fa-bell-o"></i><span>Alerts</span></a>
+            <a href=""><i className="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>
+            <a href=""><i className="fa fa-fw fa-comment-o"></i><span>Comments</span></a>
+            <a href=""><i className="fa fa-fw fa-bar-chart-o"></i><span>Analytics</span></a>
+            <a href=""><i className="fa fa-fw fa-newspaper-o"></i><span>Reading List</span></a>
+          </Menu>
+        );
         break;
       case 2:
-        items = [
-          <h2 key="0"><i className="fa fa-fw fa-inbox fa-2x"></i><span>Sidebar</span></h2>,
-          <a key="1" href=""><i className="fa fa-fw fa-database"></i><span>Data Management</span></a>,
-          <a key="2" href=""><i className="fa fa-fw fa-map-marker"></i><span>Location</span></a>,
-          <a key="3" href=""><i className="fa fa-fw fa-mortar-board"></i><span>Study</span></a>,
-          <a key="4" href=""><i className="fa fa-fw fa-picture-o"></i><span>Collections</span></a>,
-          <a key="5" href=""><i className="fa fa-fw fa-money"></i><span>Credits</span></a>
-        ];
+        jsx = (
+          <Menu id={ this.state.currentMenu } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+            <h2><i className="fa fa-fw fa-inbox fa-2x"></i><span>Sidebar</span></h2>
+            <a href=""><i className="fa fa-fw fa-database"></i><span>Data Management</span></a>
+            <a href=""><i className="fa fa-fw fa-map-marker"></i><span>Location</span></a>
+            <a href=""><i className="fa fa-fw fa-mortar-board"></i><span>Study</span></a>
+            <a href=""><i className="fa fa-fw fa-picture-o"></i><span>Collections</span></a>
+            <a href=""><i className="fa fa-fw fa-money"></i><span>Credits</span></a>
+          </Menu>
+        );
         break;
       default:
-        items = [
-          <a key="0" href=""><i className="fa fa-fw fa-star-o"></i><span>Favorites</span></a>,
-          <a key="1" href=""><i className="fa fa-fw fa-bell-o"></i><span>Alerts</span></a>,
-          <a key="2" href=""><i className="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>,
-          <a key="3" href=""><i className="fa fa-fw fa-comment-o"></i><span>Comments</span></a>,
-          <a key="4" href=""><i className="fa fa-fw fa-bar-chart-o"></i><span>Analytics</span></a>,
-          <a key="5" href=""><i className="fa fa-fw fa-newspaper-o"></i><span>Reading List</span></a>
-        ];
-    }
-
-    return items;
-  },
-
-  getMenu: function() {
-    var Menu = BurgerMenu[this.state.currentMenu];
-    var items = this.getItems();
-    var jsx;
-
-    if (this.state.side === 'right') {
-      jsx = (
-        <MenuWrap wait={ 20 } side={ this.state.side }>
-          <Menu id={ this.state.currentMenu } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } right>
-            { items }
-          </Menu>
-        </MenuWrap>
-      );
-    } else {
-      jsx = (
-        <MenuWrap wait={ 20 }>
+        jsx = (
           <Menu id={ this.state.currentMenu } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-            { items }
+            <a href=""><i className="fa fa-fw fa-star-o"></i><span>Favorites</span></a>
+            <a href=""><i className="fa fa-fw fa-bell-o"></i><span>Alerts</span></a>
+            <a href=""><i className="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>
+            <a href=""><i className="fa fa-fw fa-comment-o"></i><span>Comments</span></a>
+            <a href=""><i className="fa fa-fw fa-bar-chart-o"></i><span>Analytics</span></a>
+            <a href=""><i className="fa fa-fw fa-newspaper-o"></i><span>Reading List</span></a>
           </Menu>
-        </MenuWrap>
-      );
+        );
     }
 
     return jsx;
   },
 
   getInitialState: function() {
-    return {
-      currentMenu: 'slide',
-      side: 'left'
-    };
+    return { currentMenu: 'slide' };
   },
 
   render: function() {
     var buttons = Object.keys(this.props.menus).map(function(menu) {
       return (
         <a key={ menu }
-          className={ classNames({'current-demo': menu === this.state.currentMenu}) }
+          className={ menu === this.state.currentMenu ? 'current-demo' : '' }
           onClick={ this.changeMenu.bind(this, menu) }>
           { this.props.menus[menu].buttonText }
         </a>
       );
-    }.bind(this));
+    }.bind(this);
 
     return (
       <div id="outer-container" style={ { height: '100%' } }>
         { this.getMenu() }
         <main id="page-wrap">
           <h1><a href="https://github.com/negomi/react-burger-menu">react-burger-menu</a></h1>
-          <a className={ classNames({'side-button': true, 'left': true, 'active': this.state.side === 'left'}) } onClick={ this.changeSide.bind(this, 'left') }>Left</a>
-          <a className={ classNames({'side-button': true, 'right': true, 'active': this.state.side === 'right'}) } onClick={ this.changeSide.bind(this, 'right') }>Right</a>
-          <h2 className="description">An off-canvas sidebar React component with a collection of effects and styles using CSS transitions and SVG path animations.</h2>
+          <h2>An off-canvas sidebar React component with a collection of effects and styles using CSS transitions and SVG path animations.</h2>
           <nav className="demo-buttons">
             { buttons }
           </nav>
@@ -173,4 +108,4 @@ var menus = {
   fallDown: { buttonText: 'Fall Down', items: 2 }
 };
 
-React.render(<Demo menus={ menus } />, document.getElementById('app'));
+React.render(<Demo menus={ menus }/>, document.body);
