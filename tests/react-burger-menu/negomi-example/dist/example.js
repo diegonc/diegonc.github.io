@@ -28,7 +28,7 @@ var MenuWrap = React.createClass({
 
       setTimeout(function() {
         this.show();
-      }, this.props.wait);
+      }.bind(this), this.props.wait);
     }
   },
 
@@ -141,7 +141,7 @@ var Demo = React.createClass({
           { this.props.menus[menu].buttonText }
         </a>
       );
-    });
+    }.bind(this));
 
     return (
       <div id="outer-container" style={ { height: '100%' } }>
