@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Build-Jdk: 1.7.0_79
-Built-By: diego
-Created-By: Leiningen 2.5.3
-Main-Class: clojure.main
-
