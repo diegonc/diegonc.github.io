@@ -27,3 +27,12 @@ favicon_img_path: "imgs/favicon.ico"
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+# page variable defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      copy_year: 2017
+      copy_holder: Diego Nieto Cid
+      copy_license: cc-by-sa-4.0
