@@ -131,5 +131,9 @@ permalink: /
             Powered by <a href="http://jekyllrb.com/">Jekyll</a>, theme based on <a href="http://jekyllthemes.org/themes/front-cover/">front-cover</a>
           </div>
         </div>
+
+        {% if jekyll.environment == 'production' %}
+        {% include analytics.html %}
+        {% endif %}
     </body>
 </html>
