@@ -33,6 +33,7 @@ defaults:
   - scope:
       path: ""
     values:
+      title: tech • scrolls
       copy_year: 2017
       copy_holder: Diego Nieto Cid
       copy_license: cc-by-sa-4.0
